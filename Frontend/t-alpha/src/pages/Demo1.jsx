@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { analyzeImage } from '../components/ImageAnalysis';
 
-const ModelConfidence = () => {
+const Demo1 = () => {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -10,33 +11,18 @@ const ModelConfidence = () => {
   };
 
   const handleSubmit = async () => {
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('file', file);
-
+    setError(null);
     try {
-      const response = await fetch('http://localhost:8000/predict', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        setError(errorData.detail || 'Error processing image');
-        return;
-      }
-      
-      const data = await response.json();
-      setResult(data);
+      const res = await analyzeImage(file);
+      setResult(res);
     } catch (err) {
-      setError('Network error');
+      setError(err.message);
     }
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Model Confidence</h1>
+      <h1 className="text-2xl font-bold mb-4">Image Emotion Analysis</h1>
       <input type="file" accept="image/*" onChange={handleFileChange} />
       <button
         onClick={handleSubmit}
@@ -53,7 +39,6 @@ const ModelConfidence = () => {
           <p className="text-xl">
             Confidence: <strong>{(result.confidence * 100).toFixed(2)}%</strong>
           </p>
-          {/* Display the annotated image */}
           <img
             src={`data:image/jpeg;base64,${result.image}`}
             alt="Annotated"
@@ -66,4 +51,4 @@ const ModelConfidence = () => {
   );
 };
 
-export default ModelConfidence;
+export default Demo1;

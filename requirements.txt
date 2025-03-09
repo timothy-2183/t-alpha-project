@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+opencv-python
+numpy
+tensorflow
+python-multipart
+PyPDF2
+Pillow
