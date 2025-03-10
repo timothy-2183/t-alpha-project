@@ -10,7 +10,7 @@ app = FastAPI()
 # Enable CORS to allow communication with frontend during development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust for production use!
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -26,6 +26,7 @@ async def predict(file: UploadFile = File(...)):
     nparr = np.frombuffer(contents, np.uint8)
     image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     
+    # Not valid image
     if image is None:
         raise HTTPException(status_code=400, detail="Invalid image file")
     
@@ -33,8 +34,9 @@ async def predict(file: UploadFile = File(...)):
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3, minSize=(30, 30))
     
+    # If no faces are detected
     if len(faces) == 0:
-        return {"error": "No face detected"}
+        return {"emotion": "No face detected", "confidence": "N/A", "image": None}
     
     # Process the first face detected
     (x, y, w, h) = faces[0]
@@ -45,13 +47,14 @@ async def predict(file: UploadFile = File(...)):
     roi = np.expand_dims(roi, axis=0)
     
     preds = model.predict(roi)[0]
-    confidence = float(np.max(preds))
+    confidence = str(100*float(np.max(preds)))+"%"
     emotion = EMOTIONS[np.argmax(preds)]
     cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     # Encode the image as JPEG and then convert it to base64
     retval, buffer = cv2.imencode('.jpeg', image)
     encoded_image = base64.b64encode(buffer).decode('utf-8')
+    
 
     return {"emotion": emotion, "confidence": confidence, "image": encoded_image}
 

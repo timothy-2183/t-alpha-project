@@ -40,14 +40,16 @@ const Demo1 = () => {
               Emotion: <strong>{result.emotion}</strong>
             </p>
             <p className="text-xl">
-              Confidence: <strong>{(result.confidence * 100).toFixed(2)}%</strong>
+              Confidence: <strong>{result.confidence}</strong>
             </p>
-            <img
-              src={`data:image/jpeg;base64,${result.image}`}
-              alt="Annotated"
-              className="mt-4 mx-auto block"
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
+            {result.image && (
+              <img
+                src={`data:image/jpeg;base64,${result.image}`}
+                alt="Annotated"
+                className="mt-4 mx-auto block"
+                style={{ maxWidth: '100%', height: 'auto' }}
+              />
+            )}
           </div>
         )}
       </div>
