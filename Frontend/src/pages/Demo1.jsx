@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {analyzeImage} from '../components/ImageAnalysis';
-import Demo from './Demo1.module.css';
+import Demo from './Demo.module.css';
 
 export default function Demo1() {
   const [file, setFile] = useState(null);
@@ -29,6 +29,7 @@ export default function Demo1() {
         <div className="flex justify-center items-center mb-4">
           <input
             type="file"
+            //Change later. Copy pasted from Tailwind CSS Docs
             class="file:mr-4 file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-violet-700 hover:file:bg-violet-100 dark:file:bg-blue-600 dark:file:text-violet-100 dark:hover:file:bg-violet-500 ..."
             onChange={handleFileChange}
           />
@@ -54,7 +55,7 @@ export default function Demo1() {
                 src={`data:image/jpeg;base64,${result.image}`}
                 alt="Annotated"
                 className="mt-4 mx-auto block"
-                style={{maxWidth: '100%', height: 'auto'}}
+                style={{maxWidth: '200px', height: 'auto'}}
               />
             )}
           </div>

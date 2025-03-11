@@ -1,7 +1,6 @@
 export async function analyzeImage(file) {
-  if (!file) {
+  if (!file)
     throw new Error("No file provided");
-  }
 
   const formData = new FormData();
   formData.append('file', file);
@@ -16,6 +15,5 @@ export async function analyzeImage(file) {
     throw new Error(errorData.detail || 'Error processing image');
   }
   
-  const data = await response.json();
-  return data;
+  return await response.json();
 }

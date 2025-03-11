@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import {Home, Settings} from 'lucide-react';
+import {Home, Cog} from 'lucide-react';
 import sidebar from './Sidebar.module.css';
 
 export default function Sidebar() {
@@ -61,10 +61,29 @@ export default function Sidebar() {
             `}
           >
             <div className="flex items-center justify-center">
-              <Settings size={20} />
+              <Cog size={20} />
             </div>
             <span className="ml-2.5">
               Demo1
+            </span>
+          </button>
+        </Link>
+
+        <Link to="/demo2">
+          <button
+            className={`
+              ${buttonClass('/demo2')} 
+              flex items-center
+              transition-all duration-300 ease-in-out
+              ${isExpanded ? 'px-3 w-full' : 'px-2 w-10'}
+              overflow-hidden whitespace-nowrap
+            `}
+          >
+            <div className="flex items-center justify-center">
+              <Cog size={20} />
+            </div>
+            <span className="ml-2.5">
+              Demo2
             </span>
           </button>
         </Link>
