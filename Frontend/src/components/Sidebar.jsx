@@ -25,7 +25,7 @@ export default function Sidebar() {
         w-[var(--sidebar-width)]
         border-r border-gray-700
         bg-gray-800 text-white
-        transition-width duration-300 ease-in-out
+        transition-width duration-400 ease-in-out
       "
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -36,7 +36,7 @@ export default function Sidebar() {
             className={`
               ${buttonClass('/')} 
               flex items-center
-              transition-width duration-300 ease-in-out
+              transition-width duration-400 ease-in-out
               ${isExpanded ? 'px-3 w-full' : 'px-2 w-10'}
               overflow-hidden whitespace-nowrap
             `}
@@ -55,7 +55,7 @@ export default function Sidebar() {
             className={`
               ${buttonClass('/demo1')} 
               flex items-center
-              transition-all duration-300 ease-in-out
+              transition-all duration-400 ease-in-out
               ${isExpanded ? 'px-3 w-full' : 'px-2 w-10'}
               overflow-hidden whitespace-nowrap
             `}
@@ -74,7 +74,7 @@ export default function Sidebar() {
             className={`
               ${buttonClass('/demo2')} 
               flex items-center
-              transition-all duration-300 ease-in-out
+              transition-all duration-400 ease-in-out
               ${isExpanded ? 'px-3 w-full' : 'px-2 w-10'}
               overflow-hidden whitespace-nowrap
             `}

@@ -48,8 +48,15 @@ export default function Demo2() {
             <p>Emotion: {result.emotion}</p>
             <p>Confidence: {result.confidence}</p>
             <p>Empathy Score: {result.empathy_score}</p>
-            <p>Empathy Detected: {result.empathy_detected ? 'Yes' : 'No'}
-            </p>
+            <p>Empathy Detected: {result.empathy_detected ? 'Yes' : 'No'}</p>
+
+            {result.image && (
+              <img
+                src={`data:image/jpeg;base64,${result.image}`}
+                alt="Live analysis frame"
+                style={{ maxWidth: '30%', marginTop: '1rem' }}
+              />
+            )}
           </div>
         )}
       </div>
