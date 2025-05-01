@@ -1,0 +1,63 @@
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5; /* random background */
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffffff; /* random background */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /*  shadow */
+}
+
+.sign-in-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333333; /* Dark text */
+}
+
+.sign-in-label {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555555; /* Medium gray text */
+}
+
+.sign-in-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #cccccc; /* Light gray border */
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sign-in-input:focus {
+  outline: none;
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+.sign-in-button {
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-button:hover {
+  background-color: #0056b3; 
+}
